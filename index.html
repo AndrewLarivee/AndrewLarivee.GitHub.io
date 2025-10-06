@@ -272,7 +272,7 @@
                     <span>📞 203-640-9437</span>
                     <span>✉️ andrew.r.larivee@gmail.com</span>
                 </div>
-                <p class="intro-text">Criminology & Criminal Justice Student | Cybersecurity Minor | IT Professional</p>
+                <p class="intro-text">Criminology & Criminal Justice Student | Cybersecurity Minor | IT Professional | RIDOC SIU Intern</p>
             </header>
 
             <nav>
@@ -284,7 +284,7 @@
                     <li><a href="#" onclick="showSection('projects')" class="nav-link">Projects</a></li>
                     <li><a href="#" onclick="showSection('skills')" class="nav-link">Skills</a></li>
                     <li><a href="#" onclick="showSection('involvement')" class="nav-link">Involvement</a></li>
-                    <li><a href="Y1S1.html" class="nav-link">Academic Work</a></li>
+                    <li><a href="#" onclick="showSection('contact')" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
 
@@ -292,9 +292,15 @@
                 <h2>About Me</h2>
                 <p>Welcome to my professional portfolio! I'm a dedicated Criminology and Criminal Justice student at the University of Rhode Island with a minor in Cybersecurity. Currently maintaining a 3.0 GPA and earning Dean's List recognition, I combine academic excellence with practical IT experience.</p>
                 
-                <p>As a URI Endpoint Support Student Technician, I provide technical support across multiple operating systems while ensuring university policy compliance. My passion lies at the intersection of criminal justice and cybersecurity, where I'm developing expertise in information assurance, programming, and threat analysis.</p>
+                <p>As a URI Endpoint Support Student Technician, I provide technical support across multiple operating systems while ensuring university policy compliance. Additionally, I'm gaining invaluable real-world experience as a Special Investigations Unit intern at the Rhode Island Department of Corrections, where I apply my criminology knowledge to support critical investigations and administrative functions.</p>
                 
-                <p>This portfolio showcases my academic journey, professional experience, and ongoing projects as I work toward my May 2026 graduation. I'm actively seeking opportunities to apply my unique combination of criminology knowledge and technical skills in the cybersecurity field.</p>
+                <p>This portfolio showcases my academic journey, professional experience, and ongoing projects as I work toward my May 2026 graduation. Through my internship with RIDOC's Special Investigations Unit and IT role at URI, I'm building a unique skill set that bridges criminal justice expertise with technical proficiency. I'm actively seeking opportunities to further develop this specialized combination in the cybersecurity and criminal justice fields.</p>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#" onclick="downloadResume()" style="background: #007bff; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; transition: all 0.3s ease;">
+                        📄 Download Resume PDF
+                    </a>
+                </div>
             </div>
 
             <div id="education" class="content-section">
@@ -311,6 +317,19 @@
             <div id="experience" class="content-section">
                 <h2>Professional Experience</h2>
                 
+                <div class="experience-card">
+                    <h3>Special Investigations Unit (SIU) Intern <span class="date">Current Position</span></h3>
+                    <p class="location">Rhode Island Department of Corrections (RIDOC) | Kingston, RI</p>
+                    <ul>
+                        <li>Conduct comprehensive real-time analysis and documentation of critical incidents and events within correctional facilities</li>
+                        <li>Provide analytical support to SIU investigators through detailed research and evidence compilation</li>
+                        <li>Assist administrative staff with complex case management and procedural documentation</li>
+                        <li>Develop investigative reports and maintain confidential databases of departmental activities</li>
+                        <li>Apply criminology expertise to support ongoing investigations and security assessments</li>
+                        <li>Collaborate with law enforcement professionals to ensure accurate documentation and reporting protocols</li>
+                    </ul>
+                </div>
+
                 <div class="experience-card">
                     <h3>URI Endpoint Support Student Technician <span class="date">September 2024 - Present</span></h3>
                     <p class="location">Kingston, RI | Part-time</p>
@@ -471,6 +490,67 @@
                     <p>Participated in an intensive week-long volunteer initiative contributing to home construction for a homeless family. Gained valuable experience in community development, project management, and collaborative construction work as part of a meaningful social impact project.</p>
                 </div>
             </div>
+
+            <div id="contact" class="content-section">
+                <h2>Contact Me</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                    <div>
+                        <h3>Get In Touch</h3>
+                        <p>I'm always interested in discussing opportunities in cybersecurity, criminal justice, and IT. Whether you're looking for an intern, entry-level professional, or want to connect about shared interests, I'd love to hear from you.</p>
+                        
+                        <div style="margin: 30px 0;">
+                            <h4 style="color: #007bff; margin-bottom: 15px;">Contact Information</h4>
+                            <p><strong>📧 Email:</strong> andrew.r.larivee@gmail.com</p>
+                            <p><strong>📞 Phone:</strong> 203-640-9437</p>
+                            <p><strong>📍 Location:</strong> Madison, CT</p>
+                            <p><strong>🎓 University:</strong> University of Rhode Island</p>
+                        </div>
+
+                        <div style="text-align: center; margin-top: 30px;">
+                            <a href="#" onclick="downloadResume()" style="background: #28a745; color: white; padding: 15px 30px; text-decoration: none; border-radius: 25px; font-weight: bold; display: inline-block; transition: all 0.3s ease;">
+                                📄 Download My Resume
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <form id="contactForm" style="background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 15px;">
+                            <h3 style="margin-bottom: 20px;">Send a Message</h3>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label for="name" style="display: block; margin-bottom: 5px; color: #007bff;">Your Name *</label>
+                                <input type="text" id="name" name="name" required style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); color: #333;">
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label for="email" style="display: block; margin-bottom: 5px; color: #007bff;">Your Email *</label>
+                                <input type="email" id="email" name="email" required style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); color: #333;">
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label for="subject" style="display: block; margin-bottom: 5px; color: #007bff;">Subject</label>
+                                <select id="subject" name="subject" style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); color: #333;">
+                                    <option value="">Select a subject...</option>
+                                    <option value="internship">Internship Opportunity</option>
+                                    <option value="job">Job Opportunity</option>
+                                    <option value="networking">Professional Networking</option>
+                                    <option value="collaboration">Project Collaboration</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div style="margin-bottom: 25px;">
+                                <label for="message" style="display: block; margin-bottom: 5px; color: #007bff;">Message *</label>
+                                <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.9); color: #333; resize: vertical;" placeholder="Tell me about the opportunity or how we might work together..."></textarea>
+                            </div>
+                            
+                            <button type="submit" style="width: 100%; padding: 15px; background: #007bff; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -494,6 +574,38 @@
             // Add active class to clicked nav link
             event.target.classList.add('active');
         }
+
+        function downloadResume() {
+            // This would typically link to your actual PDF resume file
+            // For now, it shows an alert - replace with actual PDF download
+            alert('Resume download feature activated! Please upload your resume PDF to your GitHub repository and update this link to point to: "Drew_Larivee_Resume.pdf"');
+            
+            // Example of actual download (uncomment when you have the PDF):
+            // const link = document.createElement('a');
+            // link.href = 'Drew_Larivee_Resume.pdf';
+            // link.download = 'Drew_Larivee_Resume.pdf';
+            // link.click();
+        }
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Create mailto link with form data
+            const mailtoLink = `mailto:andrew.r.larivee@gmail.com?subject=${encodeURIComponent(subject || 'Contact from Portfolio Website')}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            )}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Show confirmation
+            alert('Thank you for your message! Your default email client will open with the message pre-filled.');
+        });
     </script>
 </body>
 </html>
