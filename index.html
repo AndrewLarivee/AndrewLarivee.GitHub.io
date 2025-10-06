@@ -576,15 +576,11 @@
         }
 
         function downloadResume() {
-            // This would typically link to your actual PDF resume file
-            // For now, it shows an alert - replace with actual PDF download
-            alert('Resume download feature activated! Please upload your resume PDF to your GitHub repository and update this link to point to: "Drew_Larivee_Resume.pdf"');
-            
-            // Example of actual download (uncomment when you have the PDF):
-            // const link = document.createElement('a');
-            // link.href = 'Drew_Larivee_Resume.pdf';
-            // link.download = 'Drew_Larivee_Resume.pdf';
-            // link.click();
+            // Download the actual PDF resume
+            const link = document.createElement('a');
+            link.href = 'Larivee_Resume-2.pdf';
+            link.download = 'Larivee_Resume-2.pdf';
+            link.click();
         }
 
         // Contact form handling
