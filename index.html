@@ -1,33 +1,499 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Andrew's Portfolio</title>
-    </head>
-    <body>
-            <style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drew Larivee - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-                body {background-image: url('Background-3.jpg');}
-                h1 {color:white}
-                p {color: white}
-                body {background-color: black;}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('Background-3.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-color: #000;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.7);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .banner {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-links li {
+            display: inline-block;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: #007bff;
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #fff;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .contact-info span {
+            margin: 0 15px;
+        }
+
+        .intro-text {
+            font-size: 1.2em;
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .education-card, .experience-card, .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007bff;
+        }
+
+        .date {
+            color: #007bff;
+            font-weight: bold;
+            float: right;
+        }
+
+        .location {
+            color: #ccc;
+            font-style: italic;
+        }
+
+        .coursework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .course-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #28a745;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .skill-category h4 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .status-completed {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-in-progress {
+            background: #ffc107;
+            color: black;
+        }
+
+        .status-planned {
+            background: #6c757d;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
             
-            </style>           
-<center> <img src= "Banner-4.jpg"> <br>         
-    <table width = "800px">
-                 <tr>
-                    <td align = "center"> <a href = Y1S1.html>
-                        <img src = "Y1S1.jpg" height = "35"> </a> </td>
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info span {
+                display: block;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <div class="container">
+            <header>
+                <img src="Banner-4.jpg" alt="Drew Larivee Portfolio" class="banner">
+                <h1>Drew Larivee</h1>
+                <div class="contact-info">
+                    <span>📍 Madison, CT</span>
+                    <span>📞 203-640-9437</span>
+                    <span>✉️ andrew.r.larivee@gmail.com</span>
+                </div>
+                <p class="intro-text">Criminology & Criminal Justice Student | Cybersecurity Minor | IT Professional</p>
+            </header>
 
-             </tr> 
-         </table> <br>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showSection('about')" class="nav-link active">About</a></li>
+                    <li><a href="#" onclick="showSection('education')" class="nav-link">Education</a></li>
+                    <li><a href="#" onclick="showSection('experience')" class="nav-link">Experience</a></li>
+                    <li><a href="#" onclick="showSection('coursework')" class="nav-link">Coursework</a></li>
+                    <li><a href="#" onclick="showSection('projects')" class="nav-link">Projects</a></li>
+                    <li><a href="#" onclick="showSection('skills')" class="nav-link">Skills</a></li>
+                    <li><a href="#" onclick="showSection('involvement')" class="nav-link">Involvement</a></li>
+                    <li><a href="Y1S1.html" class="nav-link">Academic Work</a></li>
+                </ul>
+            </nav>
 
-      
-   <h1> Welcome to Andrew's Portfolio</h1>
-    
-   <p> Here I will be tracking my progress through my time at URI and through my experiences outside of school. <br>
-        This website should be used as a sort of resume for comapnies and to see my progression learning different languages <br></p>
-    
-        </center>
-    </body>
+            <div id="about" class="content-section active">
+                <h2>About Me</h2>
+                <p>Welcome to my professional portfolio! I'm a dedicated Criminology and Criminal Justice student at the University of Rhode Island with a minor in Cybersecurity. Currently maintaining a 3.0 GPA and earning Dean's List recognition, I combine academic excellence with practical IT experience.</p>
+                
+                <p>As a URI Endpoint Support Student Technician, I provide technical support across multiple operating systems while ensuring university policy compliance. My passion lies at the intersection of criminal justice and cybersecurity, where I'm developing expertise in information assurance, programming, and threat analysis.</p>
+                
+                <p>This portfolio showcases my academic journey, professional experience, and ongoing projects as I work toward my May 2026 graduation. I'm actively seeking opportunities to apply my unique combination of criminology knowledge and technical skills in the cybersecurity field.</p>
+            </div>
+
+            <div id="education" class="content-section">
+                <h2>Education</h2>
+                <div class="education-card">
+                    <h3>University of Rhode Island <span class="date">Expected May 2026</span></h3>
+                    <p class="location">Kingston, RI</p>
+                    <p><strong>Bachelor of Arts:</strong> Criminology and Criminal Justice</p>
+                    <p><strong>Minor:</strong> Cybersecurity</p>
+                    <p><strong>Academic Achievements:</strong> Dean's List | GPA: 3.0</p>
+                </div>
+            </div>
+
+            <div id="experience" class="content-section">
+                <h2>Professional Experience</h2>
+                
+                <div class="experience-card">
+                    <h3>URI Endpoint Support Student Technician <span class="date">September 2024 - Present</span></h3>
+                    <p class="location">Kingston, RI | Part-time</p>
+                    <ul>
+                        <li>Provide technical support to Endpoint users on Windows OS and Linux OS platforms</li>
+                        <li>Ensure compliance with University IT policies and security standards</li>
+                        <li>Troubleshoot and resolve complex hardware and software issues</li>
+                        <li>Deliver classroom media assistance and audio-visual support</li>
+                        <li>Collaborate with IT team members to develop efficient problem-solving strategies</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Landscaper <span class="date">June 2022 - September 2024</span></h3>
+                    <p class="location">Hauser Lawn and Landscape | Madison, CT | Part-time</p>
+                    <ul>
+                        <li>Provided administrative support to field employees and management</li>
+                        <li>Maintained property grounds to meet high standards of cleanliness and functionality</li>
+                        <li>Ensured quality control and attention to detail in all landscaping projects</li>
+                        <li>Developed strong work ethic and time management skills in fast-paced environment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="coursework" class="content-section">
+                <h2>Relevant Coursework</h2>
+                <div class="coursework-grid">
+                    <div class="course-item">
+                        <h4>Crime and Delinquency</h4>
+                        <p>Developed comprehensive understanding of delinquency patterns and crime statistics in the United States</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Political Science Research</h4>
+                        <p>Mastered research design concepts and techniques while developing basic R Studio programming proficiency</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Computer Programming</h4>
+                        <p>Gained knowledge in problem specification, solution design, and algorithm development methodologies</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Fundamentals of Cyber Security</h4>
+                        <p>Comprehensive study of operating systems, Python programming, file systems, OSI model, and network protocols</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Introduction to Information Assurance</h4>
+                        <p>Developed understanding of fundamental security concepts and threat analysis methodologies</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Survey of Computer Science</h4>
+                        <p>Enhanced problem-solving capabilities through algorithmic discovery and computational analysis</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>Criminal Justice System</h4>
+                        <p>In-depth study of the American criminal justice system and its operational procedures</p>
+                    </div>
+                    <div class="course-item">
+                        <h4>The Joy of Programming</h4>
+                        <p>Foundational understanding of problem-solving through computer programming principles</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projects" class="content-section">
+                <h2>Projects & Achievements</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <span class="project-status status-completed">Completed</span>
+                        <h3>Professional Portfolio Website</h3>
+                        <p>Designed and developed this responsive portfolio website using HTML, CSS, and JavaScript. Features include dynamic content switching, mobile optimization, and professional presentation of academic and professional achievements.</p>
+                        <p><strong>Technologies:</strong> HTML5, CSS3, JavaScript, Responsive Design</p>
+                    </div>
+                    
+                    <div class="project-card">
+                        <span class="project-status status-completed">Completed</span>
+                        <h3>R Studio Data Analysis</h3>
+                        <p>Conducted comprehensive data analysis projects using R Studio for Political Science Research course. Implemented statistical models and visualization techniques for crime data analysis.</p>
+                        <p><strong>Technologies:</strong> R, R Studio, Statistical Analysis, Data Visualization</p>
+                    </div>
+                    
+                    <div class="project-card">
+                        <span class="project-status status-in-progress">In Progress</span>
+                        <h3>Cybersecurity Threat Assessment</h3>
+                        <p>Developing a comprehensive threat assessment framework as part of coursework in Information Assurance. Focus on identifying and analyzing security vulnerabilities in organizational systems.</p>
+                        <p><strong>Technologies:</strong> Python, Security Analysis Tools, Risk Assessment</p>
+                    </div>
+                    
+                    <div class="project-card">
+                        <span class="project-status status-planned">Planned</span>
+                        <h3>Criminal Justice Data Analytics</h3>
+                        <p>Planned capstone project combining criminology expertise with data science skills to analyze crime patterns and prediction models using machine learning techniques.</p>
+                        <p><strong>Technologies:</strong> Python, Machine Learning, Statistical Analysis</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="skills" class="content-section">
+                <h2>Technical Skills & Competencies</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Programming Languages</h4>
+                        <ul class="skill-list">
+                            <li>Python</li>
+                            <li>HTML/CSS</li>
+                            <li>R</li>
+                            <li>JavaScript (Learning)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Operating Systems</h4>
+                        <ul class="skill-list">
+                            <li>Windows</li>
+                            <li>macOS</li>
+                            <li>Linux</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Software & Tools</h4>
+                        <ul class="skill-list">
+                            <li>Microsoft Office Suite</li>
+                            <li>Google Workspace</li>
+                            <li>R Studio</li>
+                            <li>Git/GitHub</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Professional Skills</h4>
+                        <ul class="skill-list">
+                            <li>IT Troubleshooting</li>
+                            <li>Information Security</li>
+                            <li>Research & Analysis</li>
+                            <li>Technical Documentation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4>Certifications</h4>
+                        <ul class="skill-list">
+                            <li>ATLONA Foundations of Audio Video</li>
+                            <li>Dean's List Recognition</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="involvement" class="content-section">
+                <h2>Community Involvement & Activities</h2>
+                
+                <div class="experience-card">
+                    <h3>URI Climbing Club <span class="date">September 2023 - Present</span></h3>
+                    <p>Active member of URI's student involvement rock-climbing club, participating in regular climbing sessions, competitions, and outdoor adventures. Developed leadership and teamwork skills while maintaining physical fitness and mental resilience.</p>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Habitat For Humanity Volunteer <span class="date">August 2022</span></h3>
+                    <p>Participated in an intensive week-long volunteer initiative contributing to home construction for a homeless family. Gained valuable experience in community development, project management, and collaborative construction work as part of a meaningful social impact project.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
 </html>
